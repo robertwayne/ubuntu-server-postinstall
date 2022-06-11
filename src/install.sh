@@ -33,9 +33,7 @@ source $HOME/.cargo/env
 
 # Install nvm and Node.
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh"
 nvm install node
 
 # Add PostgreSQL 14 repository and keyring.
