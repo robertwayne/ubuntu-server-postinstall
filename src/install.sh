@@ -15,7 +15,6 @@ sudo apt update -y && sudo apt upgrade -y
 
 # Set aliases.
 echo -e "\n# Aliases added automatically by ubuntu-server-postinstall" >> ~/.bashrc
-
 echo -e "\nalias python=python3" >> ~/.bashrc
 
 # Disable MOTD News.
@@ -23,7 +22,6 @@ sudo sed -i 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
 
 # Set up basic firewall.
 sudo ufw allow OpenSSH
-
 sudo ufw --force enable
 
 # Add keyring directory for GPG keys.
@@ -31,7 +29,6 @@ sudo mkdir /usr/local/share/keyrings
 
 # Install Rust on the nightly compiler.
 curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --profile default -y
-
 source $HOME/.cargo/env
 
 # Install nvm and Node.
@@ -47,7 +44,6 @@ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc > ~/postgres.key
 
 gpg --no-default-keyring --keyring ./temp-keyring.gpg --import postgres.key
-
 gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output postgres.gpg
 
 sudo mv postgres.gpg /usr/local/share/keyrings
@@ -64,17 +60,14 @@ curl -s https://packagecloud.io/install/repositories/crowdsec/crowdsec/script.de
 
 # Install packages.
 sudo apt update -y
-
 sudo apt install -y build-essential postgresql-14 redis nginx crowdsec
 
 # Disable root login.
 sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' /etc/ssh/sshd_config
-
 sudo systemctl restart ssh
 
 # Clean up.
 rm temp-keyring.gpg temp-keyring.gpg~ postgres.key
-
 sudo apt autoremove -y
 
 # Finish message.
