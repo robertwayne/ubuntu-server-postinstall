@@ -61,7 +61,6 @@ sudo apt install -y build-essential postgresql-14 redis nginx crowdsec
 
 # Disable root login.
 sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' /etc/ssh/sshd_config
-sudo systemctl restart ssh
 
 # Clean up.
 sudo rm temp-keyring.gpg temp-keyring.gpg~ postgres.key
@@ -70,5 +69,5 @@ sudo apt autoremove -y
 # Finish message.
 clear
 echo "\`ubuntu-server-postinstall\` script complete!"
-echo "Some things to do next: run `sudo ufw --force enable`, disable passwords, and set up SSH keys, fine-tune the firewall via \`ufw\`, and consider other hardening options (\`sudo apt install lynis\` for system-wide and container auditing)."
-echo "In addition, you should consider `sudo reboot` to ensure that all changes have been applied and/or all your services have been properly restarted."
+echo "Some things to do next: run `sudo ufw --force enable`, disable passwords, set up SSH keys, fine-tune the firewall via \`ufw\`, and consider other hardening options (\`sudo apt install lynis\` for system-wide and container auditing)."
+echo "In addition, you should `sudo reboot` to ensure that all changes have been applied and/or all your services have been properly restarted."
