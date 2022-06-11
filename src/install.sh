@@ -65,7 +65,7 @@ sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' /etc/ssh
 sudo systemctl restart ssh
 
 # Clean up.
-rm temp-keyring.gpg temp-keyring.gpg~ postgres.key
+sudo rm temp-keyring.gpg temp-keyring.gpg~ postgres.key
 sudo apt autoremove -y
 
 # Finish message.
