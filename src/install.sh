@@ -22,7 +22,6 @@ sudo sed -i 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
 
 # Set up basic firewall.
 sudo ufw allow OpenSSH
-sudo ufw --force enable
 
 # Add keyring directory for GPG keys.
 sudo mkdir /usr/local/share/keyrings
@@ -71,5 +70,5 @@ sudo apt autoremove -y
 # Finish message.
 clear
 echo "\`ubuntu-server-postinstall\` script complete!"
-echo "Some things to do next: disable passwords and set up SSH keys, fine-tune the firewall via \`ufw\`, and consider other hardening options (\`sudo apt install lynis\` for system-wide and container auditing)."
+echo "Some things to do next: run `sudo ufw --force enable`, disable passwords, and set up SSH keys, fine-tune the firewall via \`ufw\`, and consider other hardening options (\`sudo apt install lynis\` for system-wide and container auditing)."
 echo "In addition, you should consider `sudo reboot` to ensure that all changes have been applied and/or all your services have been properly restarted."
