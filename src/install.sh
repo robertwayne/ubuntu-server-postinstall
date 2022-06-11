@@ -72,3 +72,4 @@ sudo apt autoremove -y
 clear
 echo "\`ubuntu-server-postinstall\` script complete!"
 echo "Some things to do next: disable passwords and set up SSH keys, fine-tune the firewall via \`ufw\`, and consider other hardening options (\`sudo apt install lynis\` for system-wide and container auditing)."
+echo "In addition, you should consider `sudo reboot` to ensure that all changes have been applied and/or all your services have been properly restarted."
